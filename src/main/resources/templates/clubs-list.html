@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<div th:replace="~{layout :: head}"></div>
+
+<div th:replace="~{layout::hero}"></div>
+
+<div th:fragment="body" class="container px-4 px-lg-5">
+<div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+            <!-- Post preview-->
+            <div class="post-preview" th:each="club:${clubs}">
+                <a href="post.html">
+                    <h2 th:text="${club.title}" class="post-title"></h2>
+                    <h3 th:text="${club.content}" class="post-subtitle"></h3>
+                </a>
+                <p class="post-meta">
+                    Posted by
+                    <a href="#!">Start Bootstrap</a>
+                    on September 24, 2023
+                </p>
+                <a class="btn btn-primary" th:href="@{/clubs/{clubId}/edit(clubId=${club.id})}">Update</a>
+            </div>
+            <!-- Divider-->
+            <hr class="my-4" />
+
+            <!-- Pager-->
+            <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">Older Posts →</a></div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="~{layout::footer}"></div>
+</html>

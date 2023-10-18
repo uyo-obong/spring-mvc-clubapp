@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<div th:replace="~{layout :: head}"></div>
+
+<div th:replace="~{layout::hero}"></div>
+
+<div th:fragment="body" class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-6 col-lg-6 col-xl-6">
+
+            <form role="form" method="post" th:action="@{/clubs/new}" th:object="${club}">
+                <div class="mb-3">
+                    <label for="title" class="form-label">Title</label>
+                    <input type="text" class="form-control" id="title" name="title" th:field="*{title}">
+                    <div th:if="${#fields.hasErrors('title')}" class="text-danger small text-lowercase" th:errors="*{title}"></div>
+                </div>
+
+
+                <div class="mb-3">
+                    <label for="content" class="form-label">Content</label>
+                    <input type="text" class="form-control" id="content" name="content" th:field="*{content}">
+                    <div th:if="${#fields.hasErrors('content')}" class="text-danger small text-lowercase" th:errors="*{content}"></div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="photo" class="form-label">Photo url</label>
+                    <input type="text" class="form-control" id="photo" name="photo" th:field="*{photo}">
+                    <div th:if="${#fields.hasErrors('photo')}" class="text-danger small text-lowercase" th:errors="*{photo}"></div>
+                </div>
+
+
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                </div>
+                <button type="submit" class="btn btn-primary mb-5">Submit</button>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<div th:replace="~{layout::footer}"></div>
+</html>
